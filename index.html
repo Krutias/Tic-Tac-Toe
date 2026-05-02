@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe – Nexus Edition</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="game-container">
+        <section id="setup-screen" class="screen">
+            <h1 class="glitch">Tic Tac Toe</h1>
+            <div class="mode-selection">
+                <button id="singlePlayerBtn" class="btn-primary">Single Player (vs CPU)</button>
+                <button id="twoPlayerBtn" class="btn-primary">Two Players</button>
+            </div>
+            
+            <div id="name-inputs" class="hidden fade-in">
+                <input type="text" id="p1-name" placeholder="Player 1 (X)" maxlength="10">
+                <input type="text" id="p2-name" placeholder="Player 2 (O)" maxlength="10">
+                <button id="startGameBtn" class="btn-confirm">Let's Play!</button>
+            </div>
+        </section>
+
+        <section id="game-screen" class="screen hidden">
+            <div class="scoreboard">
+                <div class="score-card" id="card-x">
+                    <span id="display-p1-name">Player 1</span>
+                    <span class="score" id="score-x">0</span>
+                </div>
+                <div class="score-card" id="card-o">
+                    <span id="display-p2-name">Player 2</span>
+                    <span class="score" id="score-o">0</span>
+                </div>
+            </div>
+
+            <h2 id="status-text">Your Turn, X!</h2>
+
+            <div id="board" class="board">
+                <div class="cell" data-index="0"></div>
+                <div class="cell" data-index="1"></div>
+                <div class="cell" data-index="2"></div>
+                <div class="cell" data-index="3"></div>
+                <div class="cell" data-index="4"></div>
+                <div class="cell" data-index="5"></div>
+                <div class="cell" data-index="6"></div>
+                <div class="cell" data-index="7"></div>
+                <div class="cell" data-index="8"></div>
+            </div>
+
+            <div class="game-controls">
+                <button id="restartBtn">New Round</button>
+                <button id="resetBtn">Home</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+:root {
+    --bg-dark: #0f172a;
+    --card-bg: #1e293b;
+    --accent: #6366f1;
+    --x-color: #f43f5e;
+    --o-color: #38bdf8;
+    --text-main: #f8fafc;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.game-container { width: 100%; max-width: 450px; padding: 20px; }
+
+.hidden { display: none !important; }
+
+/* Board Styling */
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 30px 0;
+    aspect-ratio: 1/1;
+}
+
+.cell {
+    background: var(--card-bg);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.5rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.cell:hover:not(:empty) { cursor: not-allowed; }
+.cell:hover:empty { background: #334155; transform: translateY(-2px); }
+
+.cell[data-mark="X"] { color: var(--x-color); animation: pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.cell[data-mark="O"] { color: var(--o-color); animation: pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
+/* Scoreboard */
+.scoreboard { display: flex; gap: 10px; margin-bottom: 20px; }
+.score-card {
+    flex: 1;
+    padding: 15px;
+    background: var(--card-bg);
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid transparent;
+}
+.active-turn { border-color: var(--accent); transform: scale(1.05); }
+
+/* Animations */
+@keyframes pop {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.fade-in { animation: fadeIn 0.5s ease-in; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Buttons */
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-primary { background: var(--accent); color: white; width: 100%; margin: 5px 0; }
+.btn-confirm { background: #10b981; color: white; margin-top: 15px; width: 100%; }
+
+/* Mobile optimization */
+@media (max-width: 480px) {
+    .cell { font-size: 2.5rem; }
+    .game-container { padding: 10px; }
+}
